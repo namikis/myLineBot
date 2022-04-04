@@ -12,12 +12,17 @@ server.listen(process.env.PORT || 3000, () => {
 
 const bot = new line.Client(line_config);
 
-const sleep = waitTime => new Promise( resolve => setTimeout(resolve, waitTime) );
+function sleep(time){
+    const startTime = new Date();
+
+    while(new Date - startTime < time);
+}
+
 
 server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
     
-    await sleep(60000);
+    sleep(60000);
 
     let events_processed = [];
 
