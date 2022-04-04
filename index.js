@@ -14,6 +14,7 @@ const bot = new line.Client(line_config);
 
 function sleep(time){
     new Promise(resolve => setTimeout(resolve, time));
+    console.log("sleeping");
 }
 
 server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
