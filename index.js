@@ -19,6 +19,10 @@ function sleep(time){
     while(new Date - startTime < time);
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 const vocabulary = [
     "それな笑",
     "すごーい！",
@@ -42,7 +46,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
             //         text: "うるせえ！"
             //     }))
             // }
-            let res_message = vocabulary[Math.random(vocabulary.length)];
+            let res_message = vocabulary[getRandomInt(vocabulary.length)];
             events_processed.push(bot.replyMessage(event.replyToken, {
                 type: "text",
                 text: res_message
