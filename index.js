@@ -23,7 +23,7 @@ function sleep(time){
 server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
     
-    sleep(5000);
+    sleep(10000);
 
     let events_processed = [];
 
