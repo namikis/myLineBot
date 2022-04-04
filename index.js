@@ -38,6 +38,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     let res_message = vocabulary[getRandomInt(vocabulary.length)];
 
     let events_processed = [];
+    let cnt = 0;
 
     req.body.events.forEach((event) => {
         if(event.type == "message" && event.message.type == "text"){
@@ -47,6 +48,8 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
             //         text: "うるせえ！"
             //     }))
             // }
+            console.log(cnt);
+            cnt += 1;
             events_processed.push(bot.replyMessage(event.replyToken, {
                 type: "text",
                 text: res_message
