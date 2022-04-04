@@ -19,6 +19,13 @@ function sleep(time){
     while(new Date - startTime < time);
 }
 
+const vocabulary = [
+    "それな笑",
+    "すごーい！",
+    "ウケる爆笑",
+    "わかる〜"
+];
+
 
 server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
@@ -29,12 +36,17 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
 
     req.body.events.forEach((event) => {
         if(event.type == "message" && event.message.type == "text"){
-            if(event.message.text == "こんにちは"){
-                events_processed.push(bot.replyMessage(event.replyToken, {
-                    type: "text",
-                    text: "うるせえ！"
-                }))
-            }
+            // if(event.message.text == "こんにちは"){
+            //     events_processed.push(bot.replyMessage(event.replyToken, {
+            //         type: "text",
+            //         text: "うるせえ！"
+            //     }))
+            // }
+            let res_message = vocabulary[Math.random(vocabulary.length)];
+            events_processed.push(bot.replyMessage(event.replyToken, {
+                type: "text",
+                text: res_message
+            }))
         }
     })
 
