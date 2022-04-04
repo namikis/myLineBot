@@ -35,6 +35,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
     
     sleep(20000);
+    let res_message = vocabulary[getRandomInt(vocabulary.length)];
 
     let events_processed = [];
 
@@ -46,7 +47,6 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
             //         text: "うるせえ！"
             //     }))
             // }
-            let res_message = vocabulary[getRandomInt(vocabulary.length)];
             events_processed.push(bot.replyMessage(event.replyToken, {
                 type: "text",
                 text: res_message
