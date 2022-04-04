@@ -14,6 +14,7 @@ const bot = new line.Client(line_config);
 
 function sleep(time){
     const startTime = new Date();
+    console.log("sleeping");
 
     while(new Date - startTime < time);
 }
@@ -22,7 +23,7 @@ function sleep(time){
 server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
     
-    sleep(60000);
+    sleep(5000);
 
     let events_processed = [];
 
